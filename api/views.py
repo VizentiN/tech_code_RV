@@ -35,8 +35,8 @@ class OrderAPIView(views.APIView):
                     order_id = response.json()['orderId']
                     order_response = {
                         "id": order_id,
-                        "description": "Your custom ramen order description here",  # Customize based on actual order details
-                        "image": "URL for the order image here"  # Customize based on actual order details
+                        "description": f"Order for {request.data.get('item_name', 'Unknown')}",
+                        "image": "URL for the order image here"
                     }
                     return Response(order_response, status=status.HTTP_201_CREATED)
                 else:

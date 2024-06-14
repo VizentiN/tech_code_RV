@@ -1,0 +1,188 @@
+@import 'variables';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
+body {
+    color: $black;
+    flex-direction: column;
+    display: flex;
+    background-color: $white;
+    min-height: 100vh;
+    width: 100%;
+}
+
+header {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+main {
+    align-items: center;
+    text-align: center;
+
+    div {
+        padding-top: 47px;
+        justify-content: center;
+
+        .item_img  {
+            width: 104px;
+            margin-top: 48px;
+        }
+
+        h3 {
+            color: $blue;
+            padding-top: 14px;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        .item_description {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 14px;
+            max-width: 252px;
+            text-align: center;
+            margin: 0 32px;
+        }
+
+        .price {
+            color: $red;
+            margin-top: auto;
+            margin-bottom: 32px;
+            font-size: 20px;
+            font-weight: 900;
+        }
+
+        :nth-child(2) {
+            margin-left: 64px;
+            margin-right: 64px;
+        }
+    }
+
+    h2 {
+        margin-top: 100px;
+        font-size: 32px;
+        font-weight: 900;
+        margin-bottom: 4px;
+    }
+
+    .paragraph_body {
+        font-size: 16px;
+    }
+}
+
+.banner {
+    background-image: url('https://ramengo-images-api.vercel.app/icons/banner/banner.png');
+    height: 768px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: $white;
+}
+
+.banner_button {
+    margin-top: 24px;
+    margin-left: 550px;
+    background-color: $blue;
+    color: $white;
+    line-height: 20.79px;
+
+    span {
+        color: $yellow;
+    }
+}
+
+.logo {
+    width: 124.69px;
+    height: 15.67px;
+    top: 40px;
+    left: 40px;
+}
+
+.banner_description {
+    margin-top: 400px;
+    margin-left: 560px;
+    line-height: 24px;
+    width: 200px;
+}
+
+.item-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    box-shadow: 0px 4px 12px 0px #E0DBBF99;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+
+    &.selected {
+        background-color: $blue;
+        color: $white;
+
+        h3 {
+            color: $white;
+        }
+
+        .price {
+            color: $yellow;
+        }
+    }
+}
+
+button {
+    line-height: 20.79px;
+    letter-spacing: 1.7799999713897705px;
+    display: flex;
+    padding: 10px 20px;
+    width: 213px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 14px;
+    border: none;
+    align-items: center;
+}
+
+.order {
+    margin-top: 33px;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        color: $white;
+        background-color: $gray;
+    }
+
+    :hover {
+        background-color: $blue;
+        color: $white;
+        
+        span {
+            color: $yellow;
+        }
+    }
+}
+
+.arrow {
+    display: block;
+    margin-left: auto;
+}
+
+#order-result {
+    margin-top: 20px;
+}
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramen Go</title>
+    <link rel="stylesheet" href="/src/styles/main.scss">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;800;900&display=swap" rel="stylesheet">    
+</head>
+<body>
+    <header class="banner">
+        <img class="logo" src="https://ramengo-images-api.vercel.app/icons/banner/logo_ramengo.png" alt="ramen go's logo">
+        <p class="banner_description">Enjoy a good ramen in the comfort of your house. Create your own ramen and choose your favorite flavour combination!</p>
+        <button class="banner_button" type="submit">ORDER NOW <span class="arrow">→</span></button>
+    </header>
+    <main>
+        <div>
+            <h2>First things first: select your favorite broth.</h2>
+            <p class="paragraph_body">It will give the whole flavor on your ramen soup. </p>
+            <div id="broth-container" class="item-container"></div>
+        </div>
+        <div>
+            <h2>It’s time to choose (or not) your meat!</h2>
+            <p class="paragraph_body">Some people love, some don’t. We have options for all tastes.</p>
+            <div id="protein-container" class="item-container"></div>
+        </div>
+        <div class="order">
+            <p id="order-result" class="order-result"></p>
+            <button type="submit" id="submit-order">PLACE MY ORDER <span class="arrow">→</span></button>
+        </div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
