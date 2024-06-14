@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Order is Being Prepared</title>
+    <link rel="stylesheet" href="src/styles/main.scss">
+    <link rel="stylesheet" href="src/styles/orders.scss">
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <img src="https://ramengo-images-api.vercel.app/icons/banner/logo_order.png" alt="Logo" class="logo_order">
+            <img src="order-image.jpg" alt="Order Image" class="order-image">
+            <h2>Your Order:</h2>
+            <p class="order-description">Shoyu and Karaage Ramen</p>
+        </div>
+        <div class="right-column">
+            <img src="icon.png" alt="Status Icon" class="status-icon">
+            <p class="status-japanese">注文が処理されています</p>
+            <p>Your order is being prepared.</p>
+            <p>Hold on, when you least expect you will be eating your ramen.</p>
+            <button onclick="window.location.href='index.html';">Place new order ➔</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const orderDescription = localStorage.getItem('orderDescription');
+            if (orderDescription) {
+                document.querySelector('.order-description').textContent = orderDescription;
+            }
+        });
+    </script>
+</body>
+</html>

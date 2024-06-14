@@ -1,0 +1,55 @@
+body, html {
+    height: 768px;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.left-column, .right-column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-column {
+    background-image: url('https://ramengo-images-api.vercel.app/icons/banner/background_order.png');
+}
+
+.logo_order {
+    align-self: flex-start;
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.order-image {
+    height: auto;
+    margin: 20px 0;
+}
+
+.order-description {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.right-column {
+    justify-content: center;
+    text-align: center;
+}
+
+.status-icon {
+    width: 50px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
