@@ -5,6 +5,17 @@ function createItemElement(item, type) {
     div.className = 'item';
     div.setAttribute('data-id', item.id);
     div.setAttribute('data-name', item.name);
+
+    let imageUrl = "";
+    if (item.name.toLowerCase().includes("karaague")) {
+        imageUrl = "https://ramengo-images-api.vercel.app/icons/banner/karaague.png";
+    } else if (item.name.toLowerCase().includes("chasu")) {
+        imageUrl = "https://ramengo-images-api.vercel.app/icons/banner/chasu.png";
+    } else if (item.name.toLowerCase().includes("yasai vegetarian")) {
+        imageUrl = "https://ramengo-images-api.vercel.app/icons/banner/vegetable.png";
+    }
+    div.setAttribute('data-image', imageUrl);
+
     div.innerHTML = `
         <img class="item_img" src="${item.imageInactive}" alt="${item.name}" data-inactive="${item.imageInactive}">
         <h3>${item.name}</h3>
@@ -46,31 +57,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedBroth = document.querySelector('#broth-container .selected');
         const selectedProtein = document.querySelector('#protein-container .selected');
         const orderResult = document.getElementById('order-result');
+
         if (selectedBroth && selectedProtein) {
             const brothName = selectedBroth.getAttribute('data-name');
             const proteinName = selectedProtein.getAttribute('data-name');
-    
-            if (!brothName || !proteinName) {
-                console.error('Nome do caldo ou da proteína não encontrado.');
-                orderResult.innerText = 'Erro ao obter os nomes dos itens selecionados.';
-                return;
-            }
-    
+            const proteinImage = selectedProtein.getAttribute('data-image');
+
             try {
                 const response = await createOrder(selectedBroth.dataset.id, selectedProtein.dataset.id);
                 if (response && response.orderId) {
-                    const orderDescription = `${brothName} and ${proteinName} Ramen`;
-                    localStorage.setItem('orderDescription', orderDescription);
+                    localStorage.setItem('orderDescription', `${brothName} and ${proteinName} Ramen`);
+                    localStorage.setItem('selectedProteinImage', proteinImage);
                     window.location.href = `order-status.html?orderId=${response.orderId}`;
                 } else {
                     throw new Error('Invalid order response');
                 }
             } catch (error) {
                 console.error('Erro ao conectar com o servidor:', error);
-                orderResult.innerText = 'Erro ao conectar com o servidor. Tente novamente.';
+                orderResult.innerText = 'Error connecting to the server. Please try again.';
             }
         } else {
-            orderResult.innerText = 'Selecione um caldo e uma proteína para fazer o pedido.';
+            orderResult.innerText = 'Select a broth and a protein to place the order.';
         }
     });
 });

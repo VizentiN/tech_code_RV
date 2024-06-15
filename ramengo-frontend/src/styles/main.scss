@@ -7,18 +7,100 @@
     font-family: "M PLUS Rounded 1c", sans-serif;
 }
 
-body {
-    color: $black;
-    flex-direction: column;
-    display: flex;
-    background-color: $white;
-    min-height: 100vh;
+html, body {
     width: 100%;
+    min-height: 100vh;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
 }
 
-header {
-    width: 100%;
-    margin-bottom: 5px;
+header.banner {
+    background-image: url('https://ramengo-images-api.vercel.app/icons/banner/background_main.png');
+    background-size: cover;
+    width: 1366px;
+    height: 768px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner_logo {
+    width: 124.69px;
+    height: 15.67px; 
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.banner_delivery_girl {
+    position: absolute;
+    width: 673px;
+    height: 683px;
+    top: 38px;
+    left: 425px;
+}
+
+.banner_japanese {
+    position: absolute;
+    width: 48px;
+    height: 224px;
+    top: 156px;
+    left: 264px;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 56px;
+    text-align: center;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    color: $yellow;
+}
+
+.banner_go {
+    position: absolute;
+    width: 308px;
+    height: 100px;
+    top: 280px;
+    left: 320px;
+    font-size: 160px;
+    font-weight: 900;
+    line-height: 100px;
+    text-align: center;
+    color: $white;
+}
+
+.banner_description {
+    position: absolute;
+    width: 201px;
+    height: 124px;
+    top: 404px;
+    left: 273px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: $white;
+}
+
+.banner_button {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 213px;
+    height: 60px;
+    top: 552px;
+    left: 273px;
+    background-color: $blue;
+    color: $white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 30px;
+
+    span.arrow {
+        margin-left: 16px;
+        font-weight: 800;
+        color: $yellow;
+    }
 }
 
 main {
@@ -76,40 +158,6 @@ main {
     }
 }
 
-.banner {
-    background-image: url('https://ramengo-images-api.vercel.app/icons/banner/banner.png');
-    height: 768px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: $white;
-}
-
-.banner_button {
-    margin-top: 24px;
-    margin-left: 550px;
-    background-color: $blue;
-    color: $white;
-    line-height: 20.79px;
-
-    span {
-        color: $yellow;
-    }
-}
-
-.logo {
-    width: 124.69px;
-    height: 15.67px;
-    top: 40px;
-    left: 40px;
-}
-
-.banner_description {
-    margin-top: 400px;
-    margin-left: 560px;
-    line-height: 24px;
-    width: 200px;
-}
 
 .item-container {
     display: flex;
@@ -140,9 +188,9 @@ main {
     }
 }
 
-button {
+button, a {
     line-height: 20.79px;
-    letter-spacing: 1.7799999713897705px;
+    letter-spacing: 1.78px;
     display: flex;
     padding: 10px 20px;
     width: 213px;
@@ -156,7 +204,6 @@ button {
 }
 
 .order {
-    margin-top: 33px;
     margin-bottom: 80px;
     display: flex;
     justify-content: center;
@@ -165,6 +212,7 @@ button {
     button {
         color: $white;
         background-color: $gray;
+        margin-bottom: -30px;
     }
 
     :hover {
@@ -183,6 +231,84 @@ button {
 }
 
 #order-result {
-    margin-top: 20px;
+    margin-top: 32px;
+    text-align: center;
+    color: $red;
+    font-size: 24px;
+    font-weight: 800;
 }
 
+@media (max-width: 600px) {
+    header.banner {
+        background-size: 80%;
+        width: 360px;
+        height: 677px;
+
+    }
+
+    .banner_logo {
+        margin-top: 0;
+        margin-left: 0;
+        width: 125px;
+        margin-top: 20px;
+        margin-left: 127px;
+    }
+
+    .banner_delivery_girl {
+        width: 265.06px;
+        height: 269px;
+        top: 60px;
+        left: 48px;
+        position: absolute;
+    }
+
+    .banner_japanese {
+        width: 219px;
+        height: 54px;
+        top: 341px;
+        left: 70px;
+        position: absolute;
+        font-size: 48px;
+        line-height: 56px;
+        text-align: center;
+        writing-mode: horizontal-tb;
+    }
+
+    .banner_go {
+        width: 231px;
+        height: 100px;
+        top: 406px;
+        left: 64px;
+        position: absolute;
+        font-size: 120px;
+        line-height: 100px;
+    }
+
+    .banner_description {
+        width: 300px;
+        height: 81px;
+        top: 530px;
+        left: 30px;
+        position: absolute;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 20px;
+        text-align: center;
+    }
+
+    .banner_button {
+        display: none;
+    }
+
+    main {
+        h2 {
+            font-size: 24px;
+            line-height: 31px;
+            margin-top: 0px;
+        }
+
+        .paragraph_body {
+            margin-top: 16px;
+        }
+    }
+}
