@@ -6,7 +6,7 @@ authors = ["Lucas Vizentin <Lucas.Vizentin@hotmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.11"
 pytest = "^8.2.2"
 factory-boy = "^3.3.0"
 django = "^5.0.6"
