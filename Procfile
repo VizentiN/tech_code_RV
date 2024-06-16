@@ -1,1 +1,1 @@
-web gunicorn ramengo.wsgi:apllication --log-file -
+web: gunicorn ramengo.wsgi:application --log-file -
