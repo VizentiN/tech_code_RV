@@ -86,7 +86,17 @@ WSGI_APPLICATION = 'ramengo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://user:password@localhost/dbname', conn_max_age=600, sslmode='disable')
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dbname',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'disable',
+        },
+    }
 }
 
 # Password validation
