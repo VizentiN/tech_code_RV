@@ -15,14 +15,19 @@ html, body {
     flex-direction: column;
 }
 
+.carousel,
+.carousel-controls {
+    display: none;
+}
+
 header.banner {
     background-image: url('https://ramengo-images-api.vercel.app/icons/banner/background_main.png');
     background-size: cover;
-    width: 1366px;
-    height: 768px;
-    position: relative;
     display: flex;
     flex-direction: column;
+    width: auto; 
+    height: 768px;
+    margin-bottom: 15px;
 }
 
 .banner_logo {
@@ -106,14 +111,14 @@ header.banner {
 main {
     align-items: center;
     text-align: center;
+    
 
     div {
-        padding-top: 47px;
         justify-content: center;
-
+        
         .item_img  {
             width: 104px;
-            margin-top: 48px;
+            padding-top: 48px;
         }
 
         h3 {
@@ -160,12 +165,13 @@ main {
 
 
 .item-container {
+    margin-top: 47px;
     display: flex;
     flex-wrap: wrap;
 }
 
 .item {
-    box-shadow: 0px 4px 12px 0px #E0DBBF99;
+    box-shadow: 0px 4px 12px 0px $white_div;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
@@ -240,10 +246,9 @@ button, a {
 
 @media (max-width: 600px) {
     header.banner {
-        background-size: 80%;
-        width: 360px;
+        width: auto;
         height: 677px;
-
+        align-items: center;
     }
 
     .banner_logo {
@@ -251,23 +256,20 @@ button, a {
         margin-left: 0;
         width: 125px;
         margin-top: 20px;
-        margin-left: 127px;
     }
 
     .banner_delivery_girl {
+        position: static;
         width: 265.06px;
         height: 269px;
-        top: 60px;
-        left: 48px;
-        position: absolute;
+        margin-top: 24px;
     }
 
     .banner_japanese {
         width: 219px;
         height: 54px;
-        top: 341px;
-        left: 70px;
-        position: absolute;
+        position: static;
+        margin-top: 12px;
         font-size: 48px;
         line-height: 56px;
         text-align: center;
@@ -277,19 +279,16 @@ button, a {
     .banner_go {
         width: 231px;
         height: 100px;
-        top: 406px;
-        left: 64px;
-        position: absolute;
+        margin-top: 11px;
+        position: static;
         font-size: 120px;
         line-height: 100px;
     }
 
     .banner_description {
         width: 300px;
-        height: 81px;
-        top: 530px;
-        left: 30px;
-        position: absolute;
+        margin-top: 24px;
+        position: static;
         font-size: 16px;
         font-weight: 500;
         line-height: 20px;
@@ -300,15 +299,85 @@ button, a {
         display: none;
     }
 
+    .item-container {
+        overflow: scroll;
+        display: inline-block;
+    }
+
     main {
+        align-items: center;
+        div {
+            justify-content: flex-start;
+            padding-bottom: 8px;
+            padding-top: 8px;
+            
+            :nth-child(2) {
+                margin-left: 16px;
+                margin-right: 16px;
+            }
+        }
+
+        .item_description {
+            width: 256px;
+            align-items: center;
+        }
+
         h2 {
             font-size: 24px;
             line-height: 31px;
-            margin-top: 0px;
+            margin-top: 40px;
         }
 
         .paragraph_body {
             margin-top: 16px;
+        }
+
+        .container-items {
+            margin-top: 32px;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+    }
+
+    .mobile-carousel {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        margin: 0 auto;
+        position: relative;
+        -webkit-overflow-scrolling: touch;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .item {
+            scroll-snap-align: center;
+        }
+    }
+
+    .carousel-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .control-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: $gray;
+            margin: 0 4px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            margin-top: 8px;
+        }
+
+        .selected-control, .item:first-child {
+            width: 36px;
+            height: 12px;
+            background-color: $red;
+            border-radius: 6px;
         }
     }
 }

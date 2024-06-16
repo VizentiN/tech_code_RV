@@ -10,10 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;800;900&display=swap" rel="stylesheet">    
 </head>
 <body>
-    <header class="banner" style="position: relative; width: 1366px; height: 768px;">
+    <header class="banner">
         <img class="banner_logo" src="https://ramengo-images-api.vercel.app/icons/banner/logo_ramengo.png" alt="Ramen Go's logo">
-        <div class="banner_japanese">ラlメン</div>
         <img class="banner_delivery_girl" src="https://ramengo-images-api.vercel.app/icons/banner/delivery_girl.png" alt="Delivery girl">
+        <div class="banner_japanese">ラlメン</div>
         <p class="banner_go">GO!</p>
         <p class="banner_description">Enjoy a good ramen in the comfort of your house. Create your own ramen and choose your favorite flavour combination!</p>
         <a href="#broth-section" class="banner_button">
@@ -24,19 +24,39 @@
     <main>
         <div id="broth-section">
             <h2>First things first: select your favorite broth.</h2>
-            <p class="paragraph_body">It will give the whole flavor on your ramen soup. </p>
-            <div id="broth-container" class="item-container"></div>
+            <p class="paragraph_body">It will give the whole flavor on your ramen soup.</p>
+            <div class="container-items">
+                <div class="item-container mobile-carousel" id="broth-container">
+                    <div id="broth-container" class="item-container"></div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <span class="control-dot"></span>
+                <span class="control-dot"></span>
+                <span class="control-dot"></span>
+            </div>
         </div>
-        <div>
+        
+        <div id="protein-section">
             <h2>It’s time to choose (or not) your meat!</h2>
             <p class="paragraph_body">Some people love, some don’t. We have options for all tastes.</p>
-            <div id="protein-container" class="item-container"></div>
+            <div class="container-items">
+                <div class="item-container mobile-carousel" id="protein-container">
+                    <div id="protein-container" class="item-container"></div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <span class="control-dot"></span>
+                <span class="control-dot"></span>
+                <span class="control-dot"></span>
+            </div>
         </div>
+        
         <p id="order-result"></p>
+        
         <div class="order">
             <button type="submit" id="submit-order">PLACE MY ORDER <span class="arrow">→</span></button>
         </div>
-        
     </main>
 
     <script type="module" src="/src/main.js"></script>

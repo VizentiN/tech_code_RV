@@ -32,6 +32,11 @@ function createItemElement(item, type) {
         div.classList.add('selected');
         const activeImg = div.querySelector('.item_img');
         activeImg.src = item.imageActive;
+
+        // Atualizar indicadores
+        const carousel = container.closest('.mobile-carousel');
+        const index = Array.from(container.children).indexOf(div);
+        updateCarouselIndicators(carousel, index);
     });
     return div;
 }
@@ -40,9 +45,13 @@ async function loadItems(type, fetchFunction) {
     const container = document.getElementById(`${type}-container`);
     try {
         const items = await fetchFunction();
-        console.log('Items loaded:', items);
         container.innerHTML = '';
         items.forEach(item => container.appendChild(createItemElement(item, type)));
+
+        const carousel = container.closest('.mobile-carousel');
+        if (carousel && container.children.length > 0) {
+            initializeCarousel(carousel); 
+        }
     } catch (error) {
         console.error(`Error fetching ${type}:`, error);
         container.innerHTML = '<p>Error loading items. Check console for details.</p>';
@@ -52,6 +61,14 @@ async function loadItems(type, fetchFunction) {
 document.addEventListener('DOMContentLoaded', () => {
     loadItems('broth', fetchBroths);
     loadItems('protein', fetchProteins);
+
+    const carousels = document.querySelectorAll('.mobile-carousel');
+    carousels.forEach(carousel => {
+        initializeCarousel(carousel);
+        carousel.addEventListener('scroll', () => {
+            updateIndicatorsOnScroll(carousel);
+        });
+    });
 
     document.getElementById('submit-order').addEventListener('click', async () => {
         const selectedBroth = document.querySelector('#broth-container .selected');
@@ -73,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     throw new Error('Invalid order response');
                 }
             } catch (error) {
-                console.error('Erro ao conectar com o servidor:', error);
+                console.error('Error connecting to the server:', error);
                 orderResult.innerText = 'Error connecting to the server. Please try again.';
             }
         } else {
@@ -81,3 +98,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+function initializeCarousel(carousel) {
+    const firstItem = carousel.querySelector('.item');
+    if (firstItem) {
+        scrollToItem(carousel, firstItem, 0);
+        updateCarouselIndicators(carousel, 0);
+    }
+}
+
+function updateIndicatorsOnScroll(carousel) {
+    const items = Array.from(carousel.querySelectorAll('.item'));
+    const scrollLeft = carousel.scrollLeft;
+    const carouselWidth = carousel.offsetWidth;
+
+    const currentItemIndex = items.findIndex(item => {
+        const itemLeft = item.offsetLeft;
+        const itemRight = itemLeft + item.offsetWidth;
+        return itemLeft <= (scrollLeft + carouselWidth / 2) && itemRight >= (scrollLeft + carouselWidth / 2);
+    });
+
+    if (currentItemIndex >= 0) {
+        updateCarouselIndicators(carousel, currentItemIndex);
+    }
+}
+
+function updateCarouselIndicators(carousel, currentIndex) {
+    const controls = carousel.nextElementSibling;
+    if (controls && controls.classList.contains('carousel-controls')) {
+        const dots = controls.querySelectorAll('.control-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.remove('selected-control');
+            if (index === currentIndex) {
+                dot.classList.add('selected-control');
+            }
+        });
+    }
+}
+
+function scrollToItem(carousel, item, index) {
+    const itemWidth = item.offsetWidth;
+    const itemStart = item.offsetLeft;
+    const carouselWidth = carousel.offsetWidth;
+    const scrollPosition = itemStart + itemWidth / 2 - carouselWidth / 2;
+
+    carousel.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+    });
+
+    updateCarouselIndicators(carousel, index);
+}
