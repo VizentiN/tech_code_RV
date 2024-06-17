@@ -40,6 +40,14 @@ function createItemElement(item, type) {
     return div;
 }
 
+function scrollToItem(carousel, item) {
+    const itemLeft = item.offsetLeft;
+    const itemWidth = item.offsetWidth;
+    const carouselWidth = carousel.offsetWidth;
+    const scrollTarget = itemLeft - (carouselWidth / 2) + (itemWidth / 2);
+    carousel.scrollLeft = scrollTarget;
+}
+
 async function loadItems(type, fetchFunction) {
     const container = document.getElementById(`${type}-container`);
     try {
@@ -101,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initializeCarousel(carousel) {
     const firstItem = carousel.querySelector('.item');
     if (firstItem) {
-        scrollToItem(carousel, firstItem, 0);
+        scrollToItem(carousel, firstItem);
         updateCarouselIndicators(carousel, 0);
     }
 }
@@ -133,18 +141,4 @@ function updateCarouselIndicators(carousel, currentIndex) {
             }
         });
     }
-}
-
-function scrollToItem(carousel, item, index) {
-    const itemWidth = item.offsetWidth;
-    const itemStart = item.offsetLeft;
-    const carouselWidth = carousel.offsetWidth;
-    const scrollPosition = itemStart + itemWidth / 2 - carouselWidth / 2;
-
-    carousel.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth'
-    });
-
-    updateCarouselIndicators(carousel, index);
 }

@@ -306,11 +306,18 @@ button, a {
 
     main {
         align-items: center;
+
         div {
             justify-content: flex-start;
             padding-bottom: 8px;
             padding-top: 8px;
             
+            div {
+                margin-left: 8px;
+                margin-right: 8px;
+                margin-top: 32px;
+                }
+
             :nth-child(2) {
                 margin-left: 16px;
                 margin-right: 16px;
@@ -330,12 +337,6 @@ button, a {
 
         .paragraph_body {
             margin-top: 16px;
-        }
-
-        .container-items {
-            margin-top: 32px;
-            margin-left: 8px;
-            margin-right: 8px;
         }
     }
 
@@ -370,7 +371,7 @@ button, a {
             margin: 0 4px;
             cursor: pointer;
             margin-bottom: 15px;
-            margin-top: 8px;
+            margin-top: -16px;
         }
 
         .selected-control, .item:first-child {
