@@ -15,7 +15,10 @@ RUN poetry config virtualenvs.create false
 RUN poetry install --only main --no-root --no-interaction
 COPY . /code
 
-ENV SECRET_KEY "bccULDebqUgk5KxbpiLWe9mL6uib50g9qEZAPhH4O9rxfZPVJF"
+RUN chmod 664 /code/db.sqlite3
+RUN chown www-data:www-data /code/db.sqlite3
+
+ENV SECRET_KEY "D4Y6jhGrq7u6spkwbXsxR396FxyrRWypPZ20XUTkiHR6w6rRGz"
 RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000

@@ -1,7 +1,7 @@
 
 const API_URL = window.location.hostname === 'localhost'
     ? 'http://localhost:8080/api'
-    : 'https://lvsramengo-cb63043e68f6.herokuapp.com/api';
+    : 'https://tech-code-rv.fly.dev/api';
 const API_KEY = "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf";
 
 export function fetchBroths() {

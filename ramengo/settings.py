@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5xp%%g8d9r!d$-dg$l=wll5*n9er!wl^$t2=xj+@7y9bw=oxfd'
+SECRET_KEY = 'D4Y6jhGrq7u6spkwbXsxR396FxyrRWypPZ20XUTkiHR6w6rRGz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
@@ -69,6 +69,18 @@ CORS_ALLOWED_ORIGINS = [
     'https://ramen-go-plum.vercel.app'
 ]
 
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    'x-api-key',
+]
 
 TEMPLATES = [
     {
