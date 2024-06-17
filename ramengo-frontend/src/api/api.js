@@ -1,6 +1,6 @@
 
 const API_URL = window.location.hostname === 'localhost'
-    ? 'http://localhost:8080/api'
+    ? 'http://localhost:8000/api'
     : 'https://tech-code-rv.fly.dev/api';
 const API_KEY = "ZtVdh8XQ2U8pWI2gmZ7f796Vh8GllXoN7mr0djNf";
 

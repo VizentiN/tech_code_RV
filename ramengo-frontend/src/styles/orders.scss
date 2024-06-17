@@ -45,6 +45,7 @@ body, html {
     font-weight: 900;
     line-height: 47.52px;
     color: $yellow;
+    text-align: center;
 }
 
 .right-column {
@@ -91,5 +92,62 @@ body, html {
 
     span {
         color: $yellow;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .right-column, .left-column {
+        width: 100%;
+    }
+
+    .left-column {
+        width: 100%;
+        height: 677px;
+    }
+
+    .logo_order {
+        width: 125px;
+        height: 16px;
+        margin-top: 20px;
+        margin-left: 0;
+        align-self: center;
+    }
+
+    .order-image {
+        height: 374px;
+        margin-top: 71px;
+        align-self: center;
+        margin-bottom: 0;
+    }
+
+    .para_left, .order-description {
+        align-self: center;
+        margin-top: 16px;
+    }
+
+    .para_left {
+        margin-bottom: 0;
+    }
+
+    .order-description {
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 100px;
+    }
+
+    .order-description {
+        width: 270px;
+    }
+
+    .button_new_order {
+        margin-bottom: 72px;
+    }
+
+    .right-column {
+        margin-top: 72px;
     }
 }

@@ -33,7 +33,6 @@ function createItemElement(item, type) {
         const activeImg = div.querySelector('.item_img');
         activeImg.src = item.imageActive;
 
-        // Atualizar indicadores
         const carousel = container.closest('.mobile-carousel');
         const index = Array.from(container.children).indexOf(div);
         updateCarouselIndicators(carousel, index);
